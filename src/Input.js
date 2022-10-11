@@ -2,13 +2,22 @@ import React from "react";
 import { Button, TextInput, View, StyleSheet } from "react-native";
 import Todos from "./Todos";
 
-export default Input = (params) => {
+export default Input = () => {
   const [text, onChangeText] = React.useState("");
   const [todos, setTodos] = React.useState([]);
 
   const addGoal = () => {
-    setTodos((prevState) => [...prevState, text]);
+    setTodos((prevState) => [
+      ...prevState,
+      { text: text, id: Math.random() * 100 },
+    ]);
     onChangeText("");
+  };
+
+  const deleteHandler = (id) => {
+    setTodos((prevState) => {
+      return prevState.filter((item) => item.id !== id);
+    });
   };
 
   return (
@@ -23,7 +32,7 @@ export default Input = (params) => {
           <Button onPress={addGoal} title="add" color="#841584" />
         </View>
       </View>
-      <Todos todos={todos} />
+      <Todos todos={todos} deleteHandler={deleteHandler} />
     </View>
   );
 };

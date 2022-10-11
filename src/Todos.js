@@ -1,11 +1,16 @@
-import { FlatList, StyleSheet, View, Text } from "react-native";
+import { FlatList, StyleSheet, View, Text, Pressable } from "react-native";
 
-export default Todos = ({ todos }) => {
+export default Todos = ({ todos, deleteHandler }) => {
+  const onPressHandler = (item) => {
+    deleteHandler(item.id);
+  };
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.item}>
-        <Text style={styles.title}>{item}</Text>
-      </View>
+      <Pressable android_ripple={true} onPress={() => onPressHandler(item)}>
+        <View style={styles.item}>
+          <Text style={styles.title}>{item.text}</Text>
+        </View>
+      </Pressable>
     );
   };
 
@@ -13,7 +18,7 @@ export default Todos = ({ todos }) => {
     <FlatList
       data={todos}
       renderItem={renderItem}
-      keyExtractor={(item) => item}
+      keyExtractor={(item) => item.id}
     />
   );
 };
@@ -24,8 +29,11 @@ const styles = StyleSheet.create({
     padding: 5,
     marginVertical: 10,
     marginHorizontal: 10,
+    borderRadius: 5,
   },
   title: {
-    fontSize: 32,
+    fontSize: 25,
+    textAlign: "center",
+    color: "#841584",
   },
 });
