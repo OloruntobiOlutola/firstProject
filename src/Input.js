@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, TextInput, View, StyleSheet, Modal } from "react-native";
+import {
+  Button,
+  TextInput,
+  View,
+  StyleSheet,
+  Modal,
+  Image,
+} from "react-native";
 import Todos from "./Todos";
 
 export default Input = ({ isOpen, onPressHandler }) => {
@@ -33,6 +40,10 @@ export default Input = ({ isOpen, onPressHandler }) => {
         presentationStyle="formSheet"
       >
         <View style={styles.inputContainer}>
+          <Image
+            source={require("../assets/image/goal.png")}
+            style={styles.image}
+          />
           <View style={styles.modal}>
             <TextInput
               style={styles.input}
@@ -70,8 +81,6 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   modal: {
-    marginTop: 30,
-
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "center",
@@ -79,13 +88,18 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: "#cba",
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   button2: {
     textAlign: "center",
     height: 50,
-    marginTop: 10,
-    borderRadius: 7,
+    marginTop: 7,
+    borderRadius: 20,
     width: "60%",
-    alignSelf: "center",
+  },
+  image: {
+    height: 100,
+    width: 100,
   },
 });

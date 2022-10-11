@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
   },
   myView: {
     flex: 1,
-    margin: "auto",
   },
   button: {
     marginTop: 15,
