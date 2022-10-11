@@ -32,17 +32,16 @@ export default function App() {
         <Text style={{ textAlign: "center", fontSize: 20 }}>
           I would be the best in this!!!
         </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-        />
-        <Button
-          onPress={addGoal}
-          title="add"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+          />
+          <View style={styles.button}>
+            <Button onPress={addGoal} title="add" color="#841584" />
+          </View>
+        </View>
         <FlatList
           data={todos}
           renderItem={renderItem}
@@ -61,13 +60,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: StatusBar.currentHeight || 0,
-    flexDirection: "column",
   },
   input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    width: "70%",
   },
   item: {
     backgroundColor: "#f9c2ff",
@@ -80,5 +79,17 @@ const styles = StyleSheet.create({
   },
   myView: {
     marginTop: 50,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    height: 50,
+    marginBottom: 10,
+    alignContent: "center",
+    justifyContent: "center",
+  },
+  button: {
+    textAlign: "center",
+    height: 50,
+    marginTop: 13,
   },
 });
