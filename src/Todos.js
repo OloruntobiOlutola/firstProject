@@ -6,11 +6,15 @@ export default Todos = ({ todos, deleteHandler }) => {
   };
   const renderItem = ({ item }) => {
     return (
-      <Pressable android_ripple={true} onPress={() => onPressHandler(item)}>
-        <View style={styles.item}>
+      <View style={styles.item}>
+        <Pressable
+          android_ripple={{ color: "#841584" }}
+          onPress={() => onPressHandler(item)}
+          style={({ pressed }) => pressed && styles.pressedItem}
+        >
           <Text style={styles.title}>{item.text}</Text>
-        </View>
-      </Pressable>
+        </Pressable>
+      </View>
     );
   };
 
@@ -26,14 +30,16 @@ export default Todos = ({ todos, deleteHandler }) => {
 const styles = StyleSheet.create({
   item: {
     backgroundColor: "#f9c2ff",
-    padding: 5,
     marginVertical: 10,
-    marginHorizontal: 10,
     borderRadius: 5,
   },
   title: {
     fontSize: 25,
     textAlign: "center",
     color: "#841584",
+    padding: 5,
+  },
+  pressedItem: {
+    opacity: 0.4,
   },
 });
