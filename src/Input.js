@@ -13,7 +13,6 @@ export default Input = ({ isOpen, onPressHandler }) => {
       { text: text, id: Math.random() * 100 },
     ]);
     onChangeText("");
-    onPressHandler();
   };
 
   const onButtonPress = () => {
